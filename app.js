@@ -13,11 +13,61 @@ recognition.onstart = function(){
 }
 // vr result 
 recognition.onresult=function (event){
-    // console.log(event);
     let current = event.resultIndex;
     let transcript = event.results[current][0].transcript;
-    // console.log(transcript);
-    readOut(transcript)
+    transcript=transcript.toLowerCase()
+    console.log(`my words:${transcript}`);
+    if(transcript.includes("hello friday")){
+        readOut("hello sir")
+    }
+    if(transcript.includes("open youtube")){
+        readOut("opening youtube")
+        window.open("https://www.youtube.com/")
+    }
+    if(transcript.includes("play the")){
+        readOut("here's the result:")
+        let input = transcript.split("")
+        input.splice(0,9)
+        input.pop()
+        input = input.join("").split(" ").join("+");
+        console.log(input);
+        window.open(`https://www.youtube.com/results?search_query=${input}`)
+        
+
+    }
+    if(transcript.includes("open google")){
+        readOut("opening google")
+        window.open("https://www.google.com/")
+    }
+    if(transcript.includes("search for")){
+        readOut("here's the result:")
+        let input = transcript.split("")
+        input.splice(0,11)
+        input.pop()
+        input = input.join("").split(" ").join("+");
+        console.log(input);
+        window.open(`https://www.google.com/search?q=${input}`);
+        
+
+    }
+    // if(transcript.includes("open firebase")|| transcript.includes("open fire base")){
+    //     readOut("opening firebase")
+    //     window.open("https://firebase.google.com/")
+    // }
+    //firebase with account feature
+    if(transcript.includes("open firebase")&&transcript.includes("account")){
+        readOut("opening firebase console")
+        let accId = transcript;
+        accId= accId.split("")
+        accId.pop()
+        accId = accId[accId.length - 1];
+        console.log(`accId is :${accId}`);
+        
+        window.open(`https://console.firebase.google.com/?_gl=1*c7vqi3*_ga*NTY1OTE5Mzg3LjE3NDY2MTA2MjA.*_ga_CW55HF8NVT*czE3NDY2MTA2MTkkbzEkZzEkdDE3NDY2MTIxNDUkajIzJGwwJGgw`)
+    }
+    
+    
+  
     
     
 }
