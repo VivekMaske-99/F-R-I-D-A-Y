@@ -20,10 +20,12 @@ recognition.onresult=function (event){
     if(transcript.includes("hello friday")){
         readOut("hello sir")
     }
+    //for youtube cammands 
     if(transcript.includes("open youtube")){
         readOut("opening youtube")
         window.open("https://www.youtube.com/")
     }
+    //yt search cammand
     if(transcript.includes("play the")){
         readOut("here's the result:")
         let input = transcript.split("")
@@ -35,10 +37,38 @@ recognition.onresult=function (event){
         
 
     }
+    //for spotify desktop
+    // https://open.spotify.com/album/013jUXOfDFXnDMBetTdsiH?si=LNgrkkjwSTKBXjbAJTrRHQ
+    if(transcript.includes("open spotify")){
+        readOut("opening spotify")
+        window.open("https://open.spotify.com/album/013jUXOfDFXnDMBetTdsiH?si=LNgrkkjwSTKBXjbAJTrRHQ", "_blank");
+    }
+
+    // to search songs on browser
+    if (transcript.includes("play song")) {
+        readOut("Here's the result on Spotify:");
+        let input = transcript.split("");
+        input.splice(0, 10); // remove "play the"
+        input.pop(); // remove final space or dot
+        input = input.join("").split(" ").join("+");
+    
+        console.log(input);
+    
+        window.open(`https://open.spotify.com/search/${input}`, "_blank");
+    }
+    //for whatsapp web
+    if(transcript.includes("open whatsapp")){
+        readOut("opening whatsapp")
+        window.open("https://web.whatsapp.com/")
+    }
+
+    
+    //opning google
     if(transcript.includes("open google")){
         readOut("opening google")
         window.open("https://www.google.com/")
     }
+    // google search cammand
     if(transcript.includes("search for")){
         readOut("here's the result:")
         let input = transcript.split("")
@@ -48,6 +78,14 @@ recognition.onresult=function (event){
         console.log(input);
         window.open(`https://www.google.com/search?q=${input}`);
         
+
+    }
+    //gmail opning cammand
+    if(transcript.includes("open gmail")){
+     readOut("opening gmail")
+     window.open("https://mail.google.com/mail/u/0/#inbox")
+
+
 
     }
     // if(transcript.includes("open firebase")|| transcript.includes("open fire base")){
@@ -64,12 +102,7 @@ recognition.onresult=function (event){
         console.log(`accId is :${accId}`);
         
         window.open(`https://console.firebase.google.com/?_gl=1*c7vqi3*_ga*NTY1OTE5Mzg3LjE3NDY2MTA2MjA.*_ga_CW55HF8NVT*czE3NDY2MTA2MTkkbzEkZzEkdDE3NDY2MTIxNDUkajIzJGwwJGgw`)
-    }
-    
-    
-  
-    
-    
+    }    
 }
 
 
