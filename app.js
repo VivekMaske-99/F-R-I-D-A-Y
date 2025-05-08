@@ -41,12 +41,53 @@ function weather(location) {
   }
 //   calling weather info
   weather("Mumbai")
+  //jarvis setup
   
   if (localStorage.getItem("jarvis_setup") !== null) {
-    weather(JSON.parse(localStorage.getItem("jarvis_setup")).location);
+    // weather(JSON.parse(localStorage.getItem("jarvis_setup")).location);
   }
-  
+  // jarvis info setup 
+  const setup = document.querySelector('.jarvis_setup')
+  setup.style.dispaly = "none"
+  if (localStorage.getItem("jarvis_setup") === null)
+{
+  setup.style.dispaly="block"
+  // setup.style.dispaly="flex"
+  setup.querySelector("button").addEventListener("click",userInfo)
+
+} 
+// setup of userinfo 
+function userInfo() {
+  let setupInfo ={
+    name:setup.querySelectorAll("input")[0].value , 
+    bio:setup.querySelectorAll("input")[1].value , 
+    address:setup.querySelectorAll("input")[2].value , 
+    instagram:setup.querySelectorAll("input")[3].value , 
+    github:setup.querySelectorAll("input")[4].value , 
+    linkdin:setup.querySelectorAll("input")[5].value , 
+  }
+
+
+
+  let testArr=[]
  
+setup.querySelectorAll("input").forEach((e)=>{
+ testArr.push(e.value)
+})
+
+if (testArr.includes("")){
+  readOut("sir please fill your complete information")
+}else{
+  localStorage.clear()
+  localStorage.setItem("jarvis_setup",JSON.stringify(setupInfo))
+  setup.style.display="none"
+  weather(JSON.parse(localStorage.getItem("jarvis_setup")).location);
+
+}
+}
+
+
+  
 
 // speech recognition setup
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -61,6 +102,7 @@ recognition.onresult=function (event){
     let current = event.resultIndex;
     let transcript = event.results[current][0].transcript;
     transcript=transcript.toLowerCase()
+    let userdata = localStorage.getItem("jarvis_setup")
     console.log(`my words:${transcript}`);
     if(transcript.includes("hello friday")){
         readOut("hello sir")
@@ -147,7 +189,38 @@ recognition.onresult=function (event){
         console.log(`accId is :${accId}`);
         
         window.open(`https://console.firebase.google.com/?_gl=1*c7vqi3*_ga*NTY1OTE5Mzg3LjE3NDY2MTA2MjA.*_ga_CW55HF8NVT*czE3NDY2MTA2MTkkbzEkZzEkdDE3NDY2MTIxNDUkajIzJGwwJGgw`)
-    }    
+    }   
+    
+    
+    if(transcript.includes("open instagram")){
+      readOut("opening instagram")
+    window.open("https://www.instagram.com/")
+    }
+    if(transcript.includes("open insta profile")){
+      readOut("opening instagram profile")
+    window.open(`https://www.instagram.com/${JSON.parse(userdata).instagram}`)
+    }
+    if(transcript.includes("open linkdin")){
+      readOut("opening linkdin")
+    window.open("https://www.linkedin.com/feed/")
+    }
+    if(transcript.includes("open link din profile")|| transcript.includes("open link dean profile")){
+      readOut("opening linkdin profile")
+    window.open(`https://www.linkedin.com/in/${JSON.parse(userdata).linkdin}`)
+    }
+    if(transcript.includes("open github")){
+      readOut("opening github")
+    window.open("https://github.com/")
+    }
+    // if(transcript.includes(" what is my name")){
+    //   readOut(`${JSON.parse(userdata).name}`)
+    
+    // }
+    // if(transcript.includes(" who i am")){
+    //   readOut(`${JSON.parse(userdata).bio}`)
+    
+    // }
+
 }
 
 
