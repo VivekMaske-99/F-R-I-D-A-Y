@@ -212,14 +212,20 @@ recognition.onresult=function (event){
       readOut("opening github")
     window.open("https://github.com/")
     }
-    // if(transcript.includes(" what is my name")){
-    //   readOut(`${JSON.parse(userdata).name}`)
+    if(transcript.includes("what is my name")){
+      let input = transcript.split("")
+      input.splice(0,16)
+      input.pop()
+      readOut(`${JSON.parse(userdata).name}`)
     
-    // }
-    // if(transcript.includes(" who i am")){
-    //   readOut(`${JSON.parse(userdata).bio}`)
+    }
+    if(transcript.includes("who i am")){
+      let input = transcript.split("")
+      input.splice(0,9)
+      input.pop()
+      readOut(`${JSON.parse(userdata).bio}`)
     
-    // }
+    }
 
 }
 
