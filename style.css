@@ -34,12 +34,23 @@ input{
    
 }
 #submit{
-    width: 80px;
+    /* width: 80px;
     padding: 10px 5px;
     background-color:rgb(166,0,0) ;
     border: none;
-    border-radius: 10px;
+    border-radius: 10px; */
+  width: 80px;
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  background: red;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  transition: background 0.3s;
 }
+
 .machine{
 background-color: black;
 -webkit-user-select: none;
@@ -60,13 +71,29 @@ position: absolute;
     bottom: 0;
     right: 0;
 }
-#time{
-color: white;
-top: 10px;
-left:10px
+/* .clock {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* adds spacing between items */
+    /* padding: 0 10px;
+    position: fixed;
+    top: 15px;
+    left: 10px;
+} */
+.clock img {
+    width: 40px;
+    height: 40px;
+} 
+#times {
+    font-size: 25px;
+    color: white;
+    margin-left: 10px;
+     white-space: nowrap;
 }
+
 .in_middel{
-    top:50%;
+    top:52%;
     left:50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -81,6 +108,7 @@ left:10px
     width: 80vw; */
     overflow-y: scroll;
 }
+
 .in_middel *{
     position: static;
 }
@@ -110,6 +138,11 @@ left:10px
     margin-left: 20px;
 }
 .battery p{
+    font-size: 16px;
+    color: white;
+    white-space: nowrap;
+
+
     margin-left: 20px;
 }
 .cont{
@@ -121,19 +154,32 @@ left:10px
 
 }
 .battery{
- 
+  display: flex;
+    align-items: center;
+ justify-content: space-between;
     left:45%;
     width: 100px;
     transform: translateX(-50);
 }
 .clock{
+    left:29px;
+    display: flex;
+    align-items: center;
+ justify-content: space-between;
+ /* padding: 0 10px; */
     width: 150px;
 }
 .internet{
     top: 120px;
-    left: 15px;
+    left: 30px;
     width: 135px;
 }
+#internet {
+    font-size: 16px;
+    color: white;
+    white-space: nowrap;
+}
+
 .temp{
     top:10px;
     right: 30px;

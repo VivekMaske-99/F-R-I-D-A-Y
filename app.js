@@ -2,6 +2,12 @@
 const startbtn = document.getElementById('start')
 const stopbtn = document.getElementById('stop')
 const speakbtn = document.getElementById('speak')
+const turn_on = document.getElementById('turn_on')
+// const time = document.getElementById('times')
+const jarvisbtn = document.getElementById('start_jarvis_btn').addEventListener("click",()=>{
+  recognition.start()
+})
+
 //weather setup
 function weather(location) {
     const weatherCont = document.querySelector(".temp").querySelectorAll("*");
@@ -18,7 +24,7 @@ function weather(location) {
         weatherCont[3].textContent = `Weather description : ${data.weather[0].description}`;
         weatherCont[4].src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
         weatherCont[5].textContent = `Original Temperature : ${ktc(
-          data.main.temp
+          data.main.temp 
         )}`;
         weatherCont[6].textContent = `feels like ${ktc(data.main.feels_like)}`;
         weatherCont[7].textContent = `Min temperature ${ktc(data.main.temp_min)}`;
@@ -41,17 +47,94 @@ function weather(location) {
   }
 //   calling weather info
   weather("Mumbai")
+  
+  // let date = new Date()
+  // let hours = date.getHours()
+  // let minutes = date.getMinutes()
+  // let seconds = date.getSeconds()
+  
+  // window.onload = ()=>{
+    //   times.textContent = `${hours}:${minutes}:${seconds}`
+    //   setInterval(() =>{
+// let date = new Date()
+// let hours = date.getHours()
+// let minutes = date.getMinutes()
+// let seconds = date.getSeconds()
+//  times.textContent = `${hours}:${minutes}:${seconds}`
+//   })
+// }
+// autojarvis 
+function autojarvis() {
+  setTimeout(() => {
+    recognition.start()
+  }, 1000);
+}
+
+
+window.onload=function(){
+// power on audio setup 
+  turn_on.play()
+  turn_on.addEventListener("onend",function(){
+    setTimeout(() => {
+      readOut("ready to go sir")
+      if(localStorage.getItem("jarvis_setup")=== null){
+        readOut("fill the information sir")
+      }
+    }, 200);
+  })
+
+
+
+  // time setup 
+function updateClock() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString();
+    document.getElementById("times").textContent = timeStr;
+}
+
+setInterval(updateClock, 1000);
+updateClock(); // Initial call
+//battery setup
+navigator.getBattery().then(function(battery) {
+    function updateBatteryStatus() {
+        const batteryStatus = `${Math.round(battery.level * 100)}% ${battery.charging ? "🔌 Charging" : ""}`;
+        document.getElementById("battery").textContent = batteryStatus;
+    }
+
+    updateBatteryStatus();
+
+    // Update when charging status or level changes
+    battery.addEventListener('chargingchange', updateBatteryStatus);
+    battery.addEventListener('levelchange', updateBatteryStatus);
+});
+// internet setup 
+function updateInternetStatus() {
+    const internetStatus = navigator.onLine ? "🟢 Online" : "🔴 Offline";
+    document.getElementById("internet").textContent = internetStatus;
+}
+
+// Initial check
+updateInternetStatus();
+
+// Listen for changes
+window.addEventListener("online", updateInternetStatus);
+window.addEventListener("offline", updateInternetStatus);
+};
+
+
+
+
   //jarvis setup
   
   if (localStorage.getItem("jarvis_setup") !== null) {
-    // weather(JSON.parse(localStorage.getItem("jarvis_setup")).location);
+    weather(JSON.parse(localStorage.getItem("jarvis_setup")).location);
   }
   // jarvis info setup 
   const setup = document.querySelector('.jarvis_setup')
-  setup.style.dispaly = "none"
+  setup.style.display = "none"
   if (localStorage.getItem("jarvis_setup") === null)
 {
-  setup.style.dispaly="block"
+  setup.style.display="block"
   // setup.style.dispaly="flex"
   setup.querySelector("button").addEventListener("click",userInfo)
 
@@ -258,6 +341,6 @@ function readOut(message){
 speakbtn.addEventListener("click",()=>{
     readOut("hii vivek i love you")
 })
-window.onload = function(){
- readOut("    ");
-}
+// window.onload = function(){
+//  readOut("    ");
+// }
