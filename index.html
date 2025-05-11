@@ -10,17 +10,17 @@
  
 
   <audio src="images/power up.mp3" id="turn_on"></audio>
-       <div class="machine">
+       <div class="machine hide_on_small">
       <div class="clock cont">
-        <img src="/images/6711612.png" id="icon" >
+        <img src="/images/6711612.png" id="icon"  alt="clock icon">
         <p id="times"></p>
       </div>
       <div class="internet cont">
-        <img src="/images/download (1).webp" id="icon" >
+        <img src="/images/download (1).webp" id="icon"  alt="internet icon">
         <p id="internet" ></p>
       </div>
       <div class="battery cont">
-        <img src="/images/download.webp" id="icon" >
+        <img src="/images/download.webp" id="icon" alt="battery icon">
         <p id="battery" ></p>
       </div> 
 
@@ -29,22 +29,32 @@
         <p id="country"></p>
         <p id="weatherT"></p>
         <p id="weatherD"></p>
-        <img src="" id="weatherIcon" />
+        <img src="" id="weatherIcon" alt="-"  >
         <p id="oTemp"></p>
         <p id="feelLikeTemp"></p>
         <p id="minT"></p>
         <p id="maxT"></p>
         </div>
 
-        <img src="images/iron_man.gif" id="model">
-        <img src="images/heart.gif" id="heart"> 
+        <!-- <img src="images/iron_man.gif" id="model" alt="Iron Man"> -->
+        <img src="images/heart.gif" id="heart" alt="heart"> 
        </div>  
 
-       <div id="start_jarvis_btn" title="start Friday">
+       <div id="start_jarvis_btn" class="hide_on_small">
         <img src="https://i.gifer.com/origin/43/434771e3bf841e79abb2d4da70d6b1e2.gif" alt=""> 
        </div>
+       <button id="stop_jarvis_btn" class="hide_on_small">
+      <img src="https://i.gifer.com/origin/43/434771e3bf841e79abb2d4da70d6b1e2.gif" alt="start jarvis" />
+      <p>Stop Recognition</p>
+        </button>
+          <div class="small_jarvis  hide_on_small">
+      <button id="small_jarvis" title="">
+        <img src="images/iron_man.gif"  alt="Iron Man in a red and gold suit standing confidently in a heroic pose against a dark background, evoking a sense of strength and determination">
+      </button>
+    </div>
+    
 
-      <div class="jarvis_setup in_middel">
+      <div class="jarvis_setup in_middel hide_on_small">
         <label for="">Your Name</label>
         <input title="Enter your Name" placeholder="Your Name">
         <br>
@@ -66,12 +76,16 @@
         <button id="submit" title="Submit your details">Submit</button>
       </div>
 
-     <div class="message"></div>
-     <div class="command in_middel"></div>
+     <!-- <div class="message"></div> -->
+     <div class="command in_middel hide_on_small"></div>
      
-    <button id="start">vr start</button>
-    <button id="stop">vr stop</button>
-    <button id="speak">speaking out</button>
+    <button id="start" style="display: none;">vr start</button>
+    <button id="stop" style="display: none;">vr stop</button>
+    <button id="speak" style="display: none;">speaking out</button>
+
+     <div class="new_jarvis_window">
+      <img src="images/heart.gif" height="230" id="jarvis_start"/>
+    </div>
 
 
 

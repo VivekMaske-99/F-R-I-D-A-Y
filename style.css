@@ -39,6 +39,8 @@ input{
     background-color:rgb(166,0,0) ;
     border: none;
     border-radius: 10px; */
+position:relative;
+left:241px;
   width: 80px;
   margin-top: 20px;
   padding: 10px;
@@ -69,7 +71,7 @@ position: absolute;
 #model{
     height: 450px;
     bottom: 0;
-    right: 0;
+    right:50px;
 }
 /* .clock {
     width: 400px;
@@ -111,6 +113,9 @@ position: absolute;
 
 .in_middel *{
     position: static;
+    display: block;
+   text-align: center;
+   justify-content: center;
 }
 .in_middel::-webkit-scrollbar{
     display: block;
@@ -223,7 +228,7 @@ display: none;
 background-color: white;
 }
 .command p{
-color:rgb(74, 45, 45)
+color:rgb(200, 47, 47)
 }
 #start_jarvis_btn{
     outline: none;
@@ -240,4 +245,64 @@ color:rgb(74, 45, 45)
 }
 #start_jarvis_btn img{
     height: 250px;
+}
+#stop_jarvis_btn {
+  border: none;
+  outline: none;
+  position: fixed;
+  left: 400px;
+  transform: translateX(0);
+  top: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+}
+
+#stop_jarvis_btn p {
+  font-size: 30px;
+}
+
+#stop_jarvis_btn img {
+  height: 300px;
+  filter: blur(5px);
+}
+.small_jarvis {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+.small_jarvis button {
+  background-color: black;
+  height: 380px; /* Reduced height to fit in bottom right corner */
+  width: 1000px; /* Reduced width to fit in bottom right corner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+}
+.small_jarvis button img {
+  height: 400px; /* Reduced height to fit in button */
+  width: 400px; /* Reduced width to fit in button */
+}
+.small_jarvis button p {
+  font-size: 20px; /* Reduced font size to fit in button */
+}
+
+.new_jarvis_window {
+  display: none;
+}
+
+@media (max-width: 300px) {
+  .hide_on_small {
+    display: none;
+  }
+  .new_jarvis_window {
+    display: block;
+  }
+  #start_jarvis_btn {
+    display: none;
+  }
 }
