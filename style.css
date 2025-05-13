@@ -59,7 +59,7 @@ input{
     border: none;
     border-radius: 10px; */
 position:relative;
-left:3px;
+left:40px;
   width: 80px;
   margin-top: 20px;
   padding: 10px;
@@ -148,8 +148,8 @@ position: absolute;
 
 }
 #icon{
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     object-fit: cover;
     padding: 3px;
     background-color: white;
@@ -296,7 +296,7 @@ color:rgb(200, 47, 47)
     outline: none;
     border: none;
     position: fixed;
-    left:250px;
+    left:280px;
     transform: translateX(0);
     top:295px;
     display: flex;
@@ -306,7 +306,7 @@ color:rgb(200, 47, 47)
 
 }
 #start_jarvis_btn img{
-    height: 250px;
+    height: 200px;
 }
 #stop_jarvis_btn {
   border: none;
