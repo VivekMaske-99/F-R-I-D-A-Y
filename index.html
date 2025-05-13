@@ -35,6 +35,15 @@
         <p id="minT"></p>
         <p id="maxT"></p>
         </div>
+        <!-- calendar -->
+      <div class="calendar">
+        <p id="month"></p>
+        <p id="day"></p>
+        <p id="date"></p>
+        <p id="year"></p>
+
+
+      </div>
 
         <!-- <img src="images/iron_man.gif" id="model" alt="Iron Man"> -->
         <img src="images/heart.gif" id="heart" alt="heart"> 
@@ -43,14 +52,15 @@
        <div id="start_jarvis_btn" class="hide_on_small">
         <img src="https://i.gifer.com/origin/43/434771e3bf841e79abb2d4da70d6b1e2.gif" alt=""> 
        </div>
-       <button id="stop_jarvis_btn" class="hide_on_small">
-      <img src="https://i.gifer.com/origin/43/434771e3bf841e79abb2d4da70d6b1e2.gif" alt="start jarvis" />
-      <p>Stop Recognition</p>
-        </button>
+      <div id ="stop_jarvis_btn">
+         <img src="https://i.gifer.com/origin/43/434771e3bf841e79abb2d4da70d6b1e2.gif" alt=""> 
+      </div>
+
           <div class="small_jarvis  hide_on_small">
-      <button id="small_jarvis" title="">
-        <img src="images/iron_man.gif"  alt="Iron Man in a red and gold suit standing confidently in a heroic pose against a dark background, evoking a sense of strength and determination">
-      </button>
+           <button id="small_jarvis" title="">
+           <img src="images/iron_man.gif"  alt="Iron Man in a red and gold suit standing confidently in a heroic pose against a dark background, evoking a sense of strength and determination">
+           <!-- <p>make me small</p> -->
+           </button>
     </div>
     
 
@@ -76,12 +86,15 @@
         <button id="submit" title="Submit your details">Submit</button>
       </div>
 
-     <!-- <div class="message"></div> -->
+    
+<div class="chat-container">
+    <div class="chat-messages"></div>
+</div>
      <div class="command in_middel hide_on_small"></div>
      
     <button id="start" style="display: none;">vr start</button>
     <button id="stop" style="display: none;">vr stop</button>
-    <button id="speak" style="display: none;">speaking out</button>
+    <button id="speak" class="hide_on_small">speaking out</button>
 
      <div class="new_jarvis_window">
       <img src="images/heart.gif" height="230" id="jarvis_start"/>

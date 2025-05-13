@@ -8,6 +8,11 @@
     position: fixed;
     font-family:'Poppins','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+body, html {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
 /* .jarvis_setup{
     display: flex;
     flex-direction: column;
@@ -18,6 +23,20 @@ button{
     color:black;
     top:50%;
     left:50%;
+}
+#speak{
+     outline: none;
+    border: none;
+    padding: 10px 10px;
+    position: fixed;
+    left:85vw;
+    transform: translateX(0);
+    top:350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+
 }
 label{
     color:rgb(166,0,0);
@@ -40,7 +59,7 @@ input{
     border: none;
     border-radius: 10px; */
 position:relative;
-left:241px;
+left:3px;
   width: 80px;
   margin-top: 20px;
   padding: 10px;
@@ -194,34 +213,77 @@ position: absolute;
 .temp *{
     position: static;
 }
-.message{
-bottom: 0;
-left: 50%;
-transform: translate(-50,0);
-max-height: 600px;
-overflow: auto;
-display: flex;
-align-items: center;
-flex-direction: column;
-justify-content: flex-end;
-padding-bottom: 15px;
-z-index: 1000;
+/* Add this to the end of style.css */
+.chat-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* margin-left: 30px; */
+    width: 38%;
+    max-width: 800px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px #00f2ff;
 }
-.message::-webkit-scrollbar{
-    display: block;
-}
-.usermsg{
-    text-align: right;
-    width: 100px;
-    color: rgb(100, 100, 227);
 
-}
-.jmsg{
-    text-align: left;
-    margin-top: 5px;
-    width: 100px;
-    color: rgb(232, 65, 65);
 
+.chat-messages {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;       /* stack messages top to bottom */
+  justify-content: flex-end;    /* keep them at the bottom */
+  align-items: flex-start;      /* jarvis messages default left */
+  padding: 10px;
+  gap: 8px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.chat-message {
+     margin: 0; /*Remove top/bottom margin since we're using gap */
+    padding: 8px 12px;
+    border-radius: 15px;
+    /* max-width: 70%; */
+    word-wrap: break-word;
+    position: relative; /* Change from static to relative */
+}
+
+.jarvismsg {
+  align-self: flex-start;                              /* stay on left */
+  background-color: rgba(255, 0, 0, 0.7);
+  color: white;
+  margin-left: 30px;;
+  border-bottom-left-radius: 5px;
+}
+
+.usermsg {
+  align-self: flex-end;                                /* push to right */
+  background-color: rgba(100, 100, 227, 0.7);
+  color: white;
+  border-bottom-right-radius: 5px;
+  margin-left: 400px;
+  text-align: right;
+}
+
+/* Scrollbar styling for chat */
+.chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
 }
 .command{
 display: none;
@@ -234,7 +296,7 @@ color:rgb(200, 47, 47)
     outline: none;
     border: none;
     position: fixed;
-    left:400px;
+    left:250px;
     transform: translateX(0);
     top:295px;
     display: flex;
@@ -250,14 +312,15 @@ color:rgb(200, 47, 47)
   border: none;
   outline: none;
   position: fixed;
-  left: 400px;
+  left: 350px;
   transform: translateX(0);
-  top: 300px;
+  top: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   display: none;
+  
 }
 
 #stop_jarvis_btn p {
@@ -265,18 +328,18 @@ color:rgb(200, 47, 47)
 }
 
 #stop_jarvis_btn img {
-  height: 300px;
+  height: 250px;
   filter: blur(5px);
 }
 .small_jarvis {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
+  position: absolute;
+  bottom: 11px;
+  right: 11px;
 }
 .small_jarvis button {
   background-color: black;
-  height: 380px; /* Reduced height to fit in bottom right corner */
-  width: 1000px; /* Reduced width to fit in bottom right corner */
+  height: 450px; /* Reduced height to fit in bottom right corner */
+  width: 75vw; /* Reduced width to fit in bottom right corner */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -284,8 +347,8 @@ color:rgb(200, 47, 47)
   border: none;
 }
 .small_jarvis button img {
-  height: 400px; /* Reduced height to fit in button */
-  width: 400px; /* Reduced width to fit in button */
+  height: 300px; /* Reduced height to fit in button */
+  width: 300px; /* Reduced width to fit in button */
 }
 .small_jarvis button p {
   font-size: 20px; /* Reduced font size to fit in button */
@@ -306,3 +369,44 @@ color:rgb(200, 47, 47)
     display: none;
   }
 }
+/* calendar */
+.calendar {
+  position: absolute;
+  top: 110px;
+  right: 350px;
+  z-index: 100000000;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: #8e2de2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4a00e0,
+    #8e2de2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4a00e0,
+    #8e2de2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.calendar * {
+  position: static;
+  width: 180px;
+  margin: 5px 0;
+}
+
+
+.calendar #month {
+  background-color: black;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+
+.calendar #date {
+  font-size: 50px;
+}
+
