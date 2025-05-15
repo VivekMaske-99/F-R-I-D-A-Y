@@ -577,10 +577,9 @@ document.querySelector("#date").innerHTML = dayNumber;
 document.querySelector("#year").innerHTML = year;
 
 document.querySelector(".calendar").addEventListener("click", () => {
-  showMessage("jarvis", "opening calender");
-  readOut("opening calendar");
-  let a = window.open("https://calendar.google.com/");
-  windowsB.push(a);
+  // showMessage("jarvis", "opening calender");
+  // readOut("opening calendar");
+  window.open("https://calendar.google.com/");
 });
 
 // news function
